@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@toast-ui/editor": "^3.2.2",
     "@vee-validate/zod": "^4.15.1",
     "sweetalert2": "^11.22.2",
     "vue": "^3.5.18",

@@ -59,8 +59,13 @@ const router = createRouter({
       component: NoticeDetailView
     },
     {
+      path: '/notices/create',
+      name: '공지사항등록',
+      component: () => import('../views/notice/NoticeEditView.vue')
+    },
+    {
       path: '/notices/:id/edit',
-      name: '공지사항 작성 및 수정',
+      name: '공지사항수정',
       component: () => import('../views/notice/NoticeEditView.vue')
     },
     {
