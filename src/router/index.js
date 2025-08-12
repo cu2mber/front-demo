@@ -1,5 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
+import SignupView from '@/views/auth/SignupView.vue'
+import SigninView from '@/views/auth/SigninView.vue'
+import FindIdView from '@/views/auth/FindIdView.vue'
+import FindPasswordView from '@/views/auth/FindPasswordView.vue'
+import NoticeListView from '@/views/notice/NoticeListView.vue'
+import NoticeDetailView from '@/views/notice/NoticeDetailView.vue'
+import EventListView from '@/views/event/EventListView.vue'
+import EventDetailView from '@/views/event/EventDetailView.vue'
+import CheckRouteView from '@/views/CheckRouteView.vue'
+import RecruitListView from '@/views/recruitment/RecruitListView.vue'
+import RecruitDetailView from '@/views/recruitment/RecruitDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,47 +31,47 @@ const router = createRouter({
     {
       path: '/signup',
       name: '회원가입',
-      component: () => import('../views/auth/SignupView.vue')
+      component: SignupView
     },
     {
       path: '/login',
       name: '로그인',
-      component: () => import('../views/auth/SigninView.vue')
+      component: SigninView
     },
     {
       path: '/findId',
       name: '아이디찾기',
-      component: () => import('../views/auth/FindIdView.vue')
+      component: FindIdView
     },
     {
       path: '/findPassword',
       name: '비밀번호찾기',
-      component: () => import('../views/auth/FindPasswordView.vue')
+      component: FindPasswordView
     },
     {
       path: '/notices',
       name: '공지사항',
-      component: () => import('../views/notice/NoticeListView.vue')
+      component: NoticeListView
     },
     {
       path: '/notices/:id',
       name: '공지사항상세',
-      component: () => import('../views/notice/NoticeDetailView.vue')
+      component: NoticeDetailView
     },
     {
       path: '/notices/:id/edit',
-      name: '공지사항수정',
+      name: '공지사항 작성 및 수정',
       component: () => import('../views/notice/NoticeEditView.vue')
     },
     {
       path: '/events',
       name: '행사',
-      component: () => import('../views/event/EventListView.vue')
+      component: EventListView
     },
     {
       path: '/evnets/:id',
       name: '행사상세',
-      component: () => import('../views/event/EventDetailView.vue')
+      component: EventDetailView
     },
     // {
     //   path: '/evnets/:id/edit',
@@ -70,17 +81,17 @@ const router = createRouter({
     {
       path: '/routes',
       name: '노선확인',
-      component: () => import('../views/CheckRouteView.vue')
+      component: CheckRouteView
     },
     {
       path: '/recruits',
       name: '모집',
-      component: () => import('../views/recruitment/RecruitListView.vue')
+      component: RecruitListView
     },
     {
       path: '/recruits/:id',
       name: '모집상세',
-      component: () => import('../views/recruitment/RecruitDetailView.vue')
+      component: RecruitDetailView
     },
     // {
     //   path: '/recruits/:id/edit',

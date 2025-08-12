@@ -10,12 +10,12 @@ function goToList(no){
   router.push(`/events/${no}`)
 }
 
-const categories = ['전체', '문학', '체육', '교육', '경영혁신', '컴퓨터', '도서', '예술', '건강']
+const categories = ['전체', '문화예술', '전통역사', '주민화합', '자연생태', '지역특산물', '컴퓨터', '체육', '건강']
 
 const events = ref([
   {
     no: 1,
-    category: '경제경영',
+    category: '문화예술',
     title: '소상공인엑스포 IN 예산',
     description:
       '충청남도 예산군 예산시장 장터 앞 주차장에서 2025년 6월 28일부터 29일까지 열리는 소상공인 축제입니다.',
@@ -26,7 +26,7 @@ const events = ref([
   },
   {
     no: 2,
-    category: '경제경영',
+    category: '자연생태',
     title: '공주 유구 색동수국정원 꽃 축제',
     description:
       '공주 유구 색동수국정원에서 열리는 수국축제로, 다양한 포토존 및 공연, 가족 프로그램이 진행됩니다.',
