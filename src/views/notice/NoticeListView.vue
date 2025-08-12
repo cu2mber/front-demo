@@ -44,7 +44,7 @@ function handleSearch() {
         :items="datas"
         searchKey="title"
         :perPage="5"
-        @row-click="handleRowClick(data.no)"
+        @row-click="handleRowClick"
       />
       </div>
 </template>

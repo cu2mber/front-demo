@@ -89,7 +89,7 @@ function sortBy(key) {
         <tr
           v-for="item in paginatedItems"
           :key="item.id || item.no"
-          @click="$emit('row-click', item)"
+          @click="$emit('row-click', item.no)"
           class="hover:bg-gray-50 cursor-pointer"
         >
           <td v-for="col in columns" :key="col.key" class="py-2 px-4">
