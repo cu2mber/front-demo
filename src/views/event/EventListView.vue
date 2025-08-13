@@ -1,16 +1,26 @@
 <script setup>
-import BaseTitle from '@/components/BaseTitle.vue'
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import BaseTitle from '@/components/BaseTitle.vue';
+import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 
-const selectedCategory = ref('전체')
-const router = useRouter()
+const selectedCategory = ref('전체');
+const router = useRouter();
 
-function goToList(no){
-  router.push(`/events/${no}`)
+function goToList(no) {
+  router.push(`/events/${no}`);
 }
 
-const categories = ['전체', '문화예술', '전통역사', '주민화합', '자연생태', '지역특산물', '컴퓨터', '체육', '건강']
+const categories = [
+  '전체',
+  '문화예술',
+  '전통역사',
+  '주민화합',
+  '자연생태',
+  '지역특산물',
+  '컴퓨터',
+  '체육',
+  '건강',
+];
 
 const events = ref([
   {
@@ -35,30 +45,26 @@ const events = ref([
     contact: '041-840-8900',
     image: '/images/hydrangea.jpg',
   },
-
-
-])
+]);
 const filteredEvents = computed(() => {
-  if (selectedCategory.value === '전체') return events.value
-  return events.value.filter((e) => e.category === selectedCategory.value)
-})
-
+  if (selectedCategory.value === '전체') return events.value;
+  return events.value.filter(e => e.category === selectedCategory.value);
+});
 </script>
 
-
 <template>
-  <div class="max-w-5xl mx-auto px-4 py-8">
-    <BaseTitle title="행사"/>
-    <div class="flex flex-wrap gap-3 mb-8 border-b pb-4">
+  <div class="mx-auto max-w-5xl px-4 py-8">
+    <BaseTitle title="행사" />
+    <div class="mb-8 flex flex-wrap gap-3 border-b pb-4">
       <button
         v-for="category in categories"
         :key="category"
         @click="selectedCategory = category"
         :class="[
-          'text-sm px-4 py-2 transition',
+          'px-4 py-2 text-sm transition',
           selectedCategory === category
             ? 'border-b border-blue-400'
-            : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100 hover:border-b'
+            : 'border-gray-300 bg-white text-gray-700 hover:border-b hover:bg-gray-100',
         ]"
       >
         {{ category }}
@@ -70,21 +76,23 @@ const filteredEvents = computed(() => {
       <div
         v-for="event in filteredEvents"
         :key="event.no"
-        class="flex flex-col sm:flex-row gap-6 border-b pb-6 cursor-pointer"
+        class="flex cursor-pointer flex-col gap-6 border-b pb-6 sm:flex-row"
         @click="goToList(event.no)"
       >
         <img
           :src="event.image"
           alt="event"
-          class="w-full sm:w-48 h-36 object-cover rounded-md border"
+          class="h-36 w-full rounded-md border object-cover sm:w-48"
         />
         <div class="flex-1">
-          <h2 class="text-lg font-semibold text-gray-900 mb-1">{{ event.title }}</h2>
-          <p class="text-sm text-gray-700 mb-2 line-clamp-2">{{ event.description }}</p>
-          <div class="text-sm text-gray-600 space-y-1">
+          <h2 class="mb-1 text-lg font-semibold text-gray-900">{{ event.title }}</h2>
+          <p class="mb-2 line-clamp-2 text-sm text-gray-700">{{ event.description }}</p>
+          <div class="space-y-1 text-sm text-gray-600">
             <p><span class="font-medium">📅 기간:</span> {{ event.period }}</p>
             <p><span class="font-medium">📍 장소:</span> {{ event.location }}</p>
-            <p v-if="event.contact"><span class="font-medium">📞 문의:</span> {{ event.contact }}</p>
+            <p v-if="event.contact">
+              <span class="font-medium">📞 문의:</span> {{ event.contact }}
+            </p>
           </div>
         </div>
       </div>

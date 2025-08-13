@@ -5,22 +5,21 @@ const props = defineProps({
   size: { type: String, default: 'md' },
   disabled: Boolean,
   disabled: Boolean,
-})
+});
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(['click']);
 
 const baseClasses = {
   primary: 'bg-mainNavy-800 hover:bg-mainNavy-900 text-white',
   blue: 'bg-blue-500 hover:bg-blue-700 text-white font-bold',
   secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800',
-}
+};
 
 const sizeClasses = {
   sm: 'text-xs px-3 py-1.5',
   md: 'text-sm px-5 py-2.5',
   lg: 'text-base px-6 py-3',
-}
-
+};
 </script>
 
 <template>
@@ -29,7 +28,11 @@ const sizeClasses = {
     :disabled="disabled"
     @click="$emit('click')"
     class="rounded font-medium transition duration-200"
-    :class="[baseClasses[variant], sizeClasses[size], disabled ? 'opacity-50 cursor-not-allowed' : '']"
+    :class="[
+      baseClasses[variant],
+      sizeClasses[size],
+      disabled ? 'cursor-not-allowed opacity-50' : '',
+    ]"
   >
     <slot></slot>
   </button>

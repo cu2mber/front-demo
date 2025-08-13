@@ -1,26 +1,25 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
 import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex min-h-screen flex-col">
     <header class="w-full p-9">
       <Navbar />
     </header>
 
-    <main class="flex-1 bg-white px-4 flex justify-center items-start">
+    <main class="flex flex-1 items-start justify-center bg-white px-4">
       <RouterView />
       <!-- <div class="w-full max-w-xl">
       </div> -->
     </main>
 
-    <footer class="w-full p-4 text-center text-sm text-gray-400 bg-gray-50">
+    <footer class="w-full bg-gray-50 p-4 text-center text-sm text-gray-400">
       © 2025 오이소박이
     </footer>
   </div>
 </template>
-
 
 <!-- <style scoped>
 header {

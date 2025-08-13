@@ -1,16 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import SignupView from '@/views/auth/SignupView.vue'
-import SigninView from '@/views/auth/SigninView.vue'
-import FindIdView from '@/views/auth/FindIdView.vue'
-import FindPasswordView from '@/views/auth/FindPasswordView.vue'
-import NoticeListView from '@/views/notice/NoticeListView.vue'
-import NoticeDetailView from '@/views/notice/NoticeDetailView.vue'
-import EventListView from '@/views/event/EventListView.vue'
-import EventDetailView from '@/views/event/EventDetailView.vue'
-import CheckRouteView from '@/views/CheckRouteView.vue'
-import RecruitListView from '@/views/recruitment/RecruitListView.vue'
-import RecruitDetailView from '@/views/recruitment/RecruitDetailView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '@/views/HomeView.vue';
+import SignupView from '@/views/auth/SignupView.vue';
+import SigninView from '@/views/auth/SigninView.vue';
+import FindIdView from '@/views/auth/FindIdView.vue';
+import FindPasswordView from '@/views/auth/FindPasswordView.vue';
+import NoticeListView from '@/views/notice/NoticeListView.vue';
+import NoticeDetailView from '@/views/notice/NoticeDetailView.vue';
+import EventListView from '@/views/event/EventListView.vue';
+import EventDetailView from '@/views/event/EventDetailView.vue';
+import CheckRouteView from '@/views/CheckRouteView.vue';
+import RecruitListView from '@/views/recruitment/RecruitListView.vue';
+import RecruitDetailView from '@/views/recruitment/RecruitDetailView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,52 +31,52 @@ const router = createRouter({
     {
       path: '/signup',
       name: '회원가입',
-      component: SignupView
+      component: SignupView,
     },
     {
       path: '/login',
       name: '로그인',
-      component: SigninView
+      component: SigninView,
     },
     {
       path: '/findId',
       name: '아이디찾기',
-      component: FindIdView
+      component: FindIdView,
     },
     {
       path: '/findPassword',
       name: '비밀번호찾기',
-      component: FindPasswordView
+      component: FindPasswordView,
     },
     {
       path: '/notices',
       name: '공지사항',
-      component: NoticeListView
+      component: NoticeListView,
     },
     {
       path: '/notices/:id',
       name: '공지사항상세',
-      component: NoticeDetailView
+      component: NoticeDetailView,
     },
     {
       path: '/notices/create',
       name: '공지사항등록',
-      component: () => import('../views/notice/NoticeEditView.vue')
+      component: () => import('../views/notice/NoticeEditView.vue'),
     },
     {
       path: '/notices/:id/edit',
       name: '공지사항수정',
-      component: () => import('../views/notice/NoticeEditView.vue')
+      component: () => import('../views/notice/NoticeEditView.vue'),
     },
     {
       path: '/events',
       name: '행사',
-      component: EventListView
+      component: EventListView,
     },
     {
       path: '/evnets/:id',
       name: '행사상세',
-      component: EventDetailView
+      component: EventDetailView,
     },
     // {
     //   path: '/evnets/:id/edit',
@@ -86,17 +86,17 @@ const router = createRouter({
     {
       path: '/routes',
       name: '노선확인',
-      component: CheckRouteView
+      component: CheckRouteView,
     },
     {
       path: '/recruits',
       name: '모집',
-      component: RecruitListView
+      component: RecruitListView,
     },
     {
       path: '/recruits/:id',
       name: '모집상세',
-      component: RecruitDetailView
+      component: RecruitDetailView,
     },
     // {
     //   path: '/recruits/:id/edit',
@@ -104,6 +104,6 @@ const router = createRouter({
     //   component: () => import('../views/recruitment/RecruitEditView.vue')
     // }
   ],
-})
+});
 
-export default router
+export default router;

@@ -9,26 +9,25 @@ defineProps({
     type: String,
     default: '확인',
   },
-})
+});
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(['click']);
 </script>
 
 <template>
-  <div class="rounded-3xl border pt-12 pb-10 px-10 bg-white w-[500px] max-w-full">
-
-    <div class="w-full pb-8 flex justify-center">
-      <h2 class="text-center text-mainNavy-900 text-3xl font-bold leading-tight tracking-tight">
+  <div class="w-[500px] max-w-full rounded-3xl border bg-white px-10 pb-10 pt-12">
+    <div class="flex w-full justify-center pb-8">
+      <h2 class="text-center text-3xl font-bold leading-tight tracking-tight text-mainNavy-900">
         {{ title }}
       </h2>
     </div>
 
-    <div class="w-full flex flex-col justify-center items-center gap-8">
+    <div class="flex w-full flex-col items-center justify-center gap-8">
       <slot></slot>
 
       <button
         v-if="showButton"
-        class="w-full py-4 text-lg font-semibold bg-mainNavy-900 text-white rounded-xl hover:bg-mainNavy-800 transition"
+        class="w-full rounded-xl bg-mainNavy-900 py-4 text-lg font-semibold text-white transition hover:bg-mainNavy-800"
         @click="$emit('click')"
       >
         {{ buttonText }}
