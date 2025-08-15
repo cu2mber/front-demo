@@ -15,7 +15,7 @@ const emit = defineEmits(['click']);
 </script>
 
 <template>
-  <div class="w-[500px] max-w-full rounded-3xl border bg-white px-10 pb-10 pt-12">
+  <div class="min-w-[500px] max-w-full rounded-3xl border bg-white px-10 pb-10 pt-12">
     <div class="flex w-full justify-center pb-8">
       <h2 class="text-center text-3xl font-bold leading-tight tracking-tight text-mainNavy-900">
         {{ title }}

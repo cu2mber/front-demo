@@ -7,6 +7,7 @@ import { toTypedSchema } from '@vee-validate/zod';
 import { z } from 'zod';
 import BaseInput from '@/components/BaseInput.vue';
 import BasePopup from '@/components/BasePopup.vue';
+import BaseFormField from '@/components/BaseFormField.vue';
 
 const router = useRouter();
 
@@ -92,15 +93,9 @@ const onSubmit = handleSubmit(values => {
   <div class="mx-auto my-10 max-w-4xl">
     <BasePopup title="회원가입" :showButton="true" buttonText="가입하기" @click="onSubmit">
       <form @submit.prevent="onSubmit" class="flex flex-col gap-4">
-        <BaseInput
-          v-model="email"
-          type="email"
-          label="이메일"
-          placeholder="이메일을 입력해주세요"
-          :error="emailError"
-          required
-        >
-          <template #right>
+        <BaseFormField id="email" label="이메일" :error="emailError" required>
+          <BaseInput v-model="email" type="email" placeholder="이메일을 입력해주세요" />
+          <template #after>
             <button
               class="w-24 rounded px-3 py-2 text-center text-sm text-white transition-colors"
               @click.prevent="sendVerificationCode"
@@ -114,17 +109,16 @@ const onSubmit = handleSubmit(values => {
               {{ timeLeft > 0 ? '재전송' : '본인인증' }}
             </button>
           </template>
-        </BaseInput>
+        </BaseFormField>
 
-        <BaseInput
-          v-model="verificationCode"
-          type="text"
+        <BaseFormField
+          id="verificationCode"
           label="인증번호"
-          placeholder="인증번호를 입력해주세요"
           :error="verificationCodeError"
           required
         >
-          <template #right>
+          <BaseInput v-model="verificationCode" type="text" placeholder="인증번호를 입력해주세요" />
+          <template #after>
             <span class="w-16 pr-2 text-right font-mono text-sm text-gray-500">
               {{ formattedTime }}
             </span>
@@ -135,44 +129,45 @@ const onSubmit = handleSubmit(values => {
               확인
             </button>
           </template>
-        </BaseInput>
+        </BaseFormField>
 
-        <BaseInput
-          v-model="password"
-          type="password"
+        <BaseFormField
+          id="password"
           label="비밀번호"
-          placeholder="비밀번호를 입력해주세요"
-          caption="8~20자 이내 숫자, 특수문자, 영문자 중 2가지 이상을 조합"
-          icon="lock-closed"
           :error="passwordError"
+          :caption="'8~20자 이내 숫자, 특수문자, 영문자 중 2가지 이상을 조합'"
           required
-        />
-        <BaseInput
-          v-model="passwordConfirm"
-          type="password"
+        >
+          <BaseInput
+            v-model="password"
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            icon="lock-closed"
+          />
+        </BaseFormField>
+
+        <BaseFormField
+          id="passwordConfirm"
           label="비밀번호 확인"
-          placeholder="비밀번호를 입력해주세요"
-          caption="동일한 비밀번호를 입력해주세요"
-          icon="lock-closed"
           :error="passwordConfirmError"
+          :caption="'동일한 비밀번호를 입력해주세요'"
           required
-        />
-        <BaseInput
-          v-model="phone"
-          type="text"
-          label="휴대폰번호"
-          placeholder="010-0000-0000"
-          :error="phoneError"
-          required
-        />
-        <BaseInput
-          v-model="birth"
-          type="text"
-          label="생년월일"
-          placeholder="YYYYMMDD"
-          :error="birthError"
-          required
-        />
+        >
+          <BaseInput
+            v-model="passwordConfirm"
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            icon="lock-closed"
+          />
+        </BaseFormField>
+
+        <BaseFormField id="phone" label="휴대폰번호" :error="phoneError" required>
+          <BaseInput v-model="phone" type="text" placeholder="010-0000-0000" />
+        </BaseFormField>
+
+        <BaseFormField id="birth" label="생년월일" :error="birthError" required>
+          <BaseInput v-model="birth" type="text" placeholder="YYYYMMDD" />
+        </BaseFormField>
       </form>
     </BasePopup>
   </div>
