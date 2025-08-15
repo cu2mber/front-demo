@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import BaseFormField from '@/components/BaseFormField.vue';
+import BaseInput from '@/components/BaseInput.vue';
+import BaseCheckbox from '@/components/BaseCheckbox.vue';
 import BaseTitle from '@/components/BaseTitle.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import Editor from '@/components/Editor.vue';
@@ -23,7 +26,7 @@ function goToBack() {
 }
 
 const title = ref('');
-const pinTitle = ref(false);
+const isFree = ref(false);
 const content = ref('');
 
 const isEditMode = computed(() => !!route.params.id);
@@ -54,30 +57,41 @@ onMounted(() => {
 
 <template>
   <div class="mx-auto space-y-6 px-4">
-    <BaseTitle :title="isEditMode ? '공지사항 수정' : '공지사항 등록'" />
+    <BaseTitle :title="isEditMode ? '행사 수정' : '행사 등록'" />
 
-    <div class="flex flex-col border-b py-3 sm:flex-row sm:items-center sm:space-x-4">
-      <label for="title" class="mb-1 whitespace-nowrap font-semibold sm:mb-0">제목</label>
-      <input
-        id="title"
-        v-model="title"
-        type="text"
-        placeholder="제목을 입력하세요"
-        class="flex-1 rounded border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+    <BaseFormField id="name" label="행사이름" showBorder>
+      <BaseInput id="name" type="text" v-model="name" placeholder="행사 이름을 입력하세요." />
+    </BaseFormField>
+
+    <BaseFormField id="price" label="요금" showBorder>
+      <BaseInput
+        id="price"
+        type="number"
+        v-model.number="price"
+        placeholder="요금을 입력하세요."
+        :disabled="isFree"
       />
-      <label
-        for="pinTitle"
-        class="mt-2 flex cursor-pointer select-none items-center space-x-1 whitespace-nowrap sm:mt-0"
-      >
-        <input id="pinTitle" type="checkbox" v-model="pinTitle" class="h-4 w-4" />
-        <span>고정</span>
-      </label>
-    </div>
+      <template #after>
+        <BaseCheckbox v-model="isFree" label="무료" />
+      </template>
+    </BaseFormField>
 
-    <div class="flex flex-col border-b pb-6 sm:flex-row sm:items-start sm:space-x-4">
-      <label for="content" class="mb-2 whitespace-nowrap font-semibold sm:mb-0"> 본문 </label>
-      <Editor id="content" v-model="content" height="500px" class="flex-1" />
-    </div>
+    <BaseFormField id="host" label="주최/주최기관" showBorder>
+      <BaseInput
+        id="host"
+        type="text"
+        v-model="name"
+        placeholder="주최 혹은 주최기관을 입력하세요."
+      />
+    </BaseFormField>
+
+    <BaseFormField id="contact" label="문의 연락처" showBorder>
+      <BaseInput id="contact" type="text" v-model="name" placeholder="문의 연락처를 입력하세요." />
+    </BaseFormField>
+
+    <BaseFormField id="content" label="본문" showBorder>
+      <Editor v-model="content" />
+    </BaseFormField>
 
     <div class="mt-6 flex justify-center gap-4">
       <BaseButton @click="submitForm" variant="blue">

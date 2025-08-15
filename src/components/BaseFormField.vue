@@ -5,7 +5,7 @@ const props = defineProps({
   required: Boolean,
   error: String,
   caption: String,
-  border: Boolean,
+  showBorder: Boolean,
   labelWidth: { type: String, default: '120px' },
 });
 </script>
@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
   <div
     class="flex flex-col pb-3 sm:flex-row sm:items-center sm:space-x-4"
-    :class="border ? 'border-b' : ''"
+    :class="showBorder ? 'border-b' : ''"
   >
     <label
       v-if="label"

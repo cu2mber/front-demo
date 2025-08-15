@@ -27,11 +27,12 @@ function onInput(event) {
       :placeholder="placeholder"
       :disabled="disabled"
       :readonly="readonly"
-      :class="
+      :class="[
+        'w-full rounded border px-3 py-3 text-sm focus:outline-none',
         disabled
-          ? 'cursor-not-allowed rounded border bg-gray-100'
-          : 'w-full rounded border bg-white px-3 py-3 text-sm focus:outline-none'
-      "
+          ? 'cursor-not-allowed border-gray-300 bg-gray-100'
+          : 'border-gray-300 bg-white focus:ring-2 focus:ring-blue-400',
+      ]"
     />
   </div>
 </template>

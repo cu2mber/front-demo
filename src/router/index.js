@@ -61,12 +61,12 @@ const router = createRouter({
     {
       path: '/notices/create',
       name: '공지사항등록',
-      component: () => import('../views/notice/NoticeEditView.vue'),
+      component: () => import('../views/notice/NoticeFormView.vue'),
     },
     {
       path: '/notices/:id/edit',
       name: '공지사항수정',
-      component: () => import('../views/notice/NoticeEditView.vue'),
+      component: () => import('../views/notice/NoticeFormView.vue'),
     },
     {
       path: '/events',
@@ -78,11 +78,16 @@ const router = createRouter({
       name: '행사상세',
       component: EventDetailView,
     },
-    // {
-    //   path: '/evnets/:id/edit',
-    //   name: '행사수정',
-    //   component: () => import('../views/event/EventEditView.vue')
-    // },
+    {
+      path: '/events/create',
+      name: '행사등록',
+      component: () => import('../views/event/EventFormView.vue'),
+    },
+    {
+      path: '/evnets/:id/edit',
+      name: '행사수정',
+      component: () => import('../views/event/EventFormView.vue'),
+    },
     {
       path: '/routes',
       name: '노선확인',
@@ -103,6 +108,16 @@ const router = createRouter({
     //   name: '모집수정',
     //   component: () => import('../views/recruitment/RecruitEditView.vue')
     // }
+    {
+      path: '/reviews/create',
+      name: '후기등록',
+      component: () => import('../views/review/ReviewFormView.vue'),
+    },
+    {
+      path: '/reviews/:id/edit',
+      name: '후기수정',
+      component: () => import('../views/review/ReviewFormView.vue'),
+    },
   ],
 });
 
