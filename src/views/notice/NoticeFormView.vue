@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, useTemplateRef } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import BaseFormField from '@/components/BaseFormField.vue';
 import BaseInput from '@/components/BaseInput.vue';
@@ -26,6 +26,7 @@ function goToBack() {
 const title = ref('');
 const pinTitle = ref(false);
 const content = ref('');
+const titleInputRef = ref(null);
 
 const isEditMode = computed(() => !!route.params.id);
 
@@ -42,6 +43,7 @@ function submitForm() {
 }
 
 onMounted(() => {
+  titleInputRef.value?.focus();
   if (isEditMode.value) {
     const id = route.query.id;
     // 데이터 불러오는 로직 추가
@@ -58,7 +60,13 @@ onMounted(() => {
     <BaseTitle :title="isEditMode ? '공지사항 수정' : '공지사항 등록'" />
 
     <BaseFormField id="title" label="제목" showBorder>
-      <BaseInput id="title" type="text" v-model="title" placeholder="제목을 입력하세요." />
+      <BaseInput
+        id="title"
+        type="text"
+        v-model="title"
+        placeholder="제목을 입력하세요."
+        ref="titleInputRef"
+      />
       <template #after>
         <BaseCheckbox v-model="pinTitle" label="고정" />
       </template>

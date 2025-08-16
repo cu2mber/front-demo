@@ -1,4 +1,6 @@
 <script setup>
+import { ref, defineExpose } from 'vue';
+
 const props = defineProps({
   modelValue: [String, Number],
   type: { type: String, default: 'text' },
@@ -8,11 +10,16 @@ const props = defineProps({
   icon: String,
 });
 
+const inputRef = ref(null);
 const emit = defineEmits(['update:modelValue']);
 
 function onInput(event) {
   emit('update:modelValue', event.target.value);
 }
+
+defineExpose({
+  focus: () => inputRef.value?.focus(),
+});
 </script>
 
 <template>
@@ -33,6 +40,7 @@ function onInput(event) {
           ? 'cursor-not-allowed border-gray-300 bg-gray-100'
           : 'border-gray-300 bg-white focus:ring-2 focus:ring-blue-400',
       ]"
+      ref="inputRef"
     />
   </div>
 </template>

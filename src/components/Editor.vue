@@ -19,6 +19,10 @@ const props = defineProps({
     type: String,
     default: 'wysiwyg', // 또는 'markdown'
   },
+  autofocus: {
+    type: Boolean,
+    default: false,
+  },
 });
 const emit = defineEmits(['update:modelValue']);
 
@@ -29,6 +33,7 @@ onMounted(() => {
     initialEditType: props.initialEditType,
     initialValue: props.modelValue || '',
     previewStyle: 'vertical',
+    autofocus: props.autofocus,
     // placeholder: '내용을 입력해 주세요.',
     events: {
       change: () => {

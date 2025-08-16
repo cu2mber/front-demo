@@ -28,6 +28,7 @@ function goToBack() {
 const title = ref('');
 const isFree = ref(false);
 const content = ref('');
+const titleInputRef = ref(null);
 
 const isEditMode = computed(() => !!route.params.id);
 
@@ -44,6 +45,7 @@ function submitForm() {
 }
 
 onMounted(() => {
+  titleInputRef.value?.focus();
   if (isEditMode.value) {
     const id = route.query.id;
     // 데이터 불러오는 로직 추가
@@ -60,7 +62,13 @@ onMounted(() => {
     <BaseTitle :title="isEditMode ? '행사 수정' : '행사 등록'" />
 
     <BaseFormField id="name" label="행사이름" showBorder>
-      <BaseInput id="name" type="text" v-model="name" placeholder="행사 이름을 입력하세요." />
+      <BaseInput
+        id="name"
+        type="text"
+        v-model="name"
+        placeholder="행사 이름을 입력하세요."
+        ref="titleInputRef"
+      />
     </BaseFormField>
 
     <BaseFormField id="price" label="요금" showBorder>

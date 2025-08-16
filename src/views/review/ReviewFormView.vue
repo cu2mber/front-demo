@@ -66,7 +66,7 @@ onMounted(() => {
       </BaseFormField>
 
       <BaseFormField id="content" label="본문" showBorder>
-        <Editor v-model="content" height="500px" />
+        <Editor v-model="content" />
       </BaseFormField>
 
       <div class="mt-6 flex justify-center gap-4">
