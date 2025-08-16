@@ -1,7 +1,29 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import BaseInput from '@/components/BaseInput.vue';
 import BasePopup from '@/components/BasePopup.vue';
 import BaseFormField from '@/components/BaseFormField.vue';
+import BaseCheckbox from '@/components/BaseCheckbox.vue';
+import SocialLoginButton from '@/components/SocialLoginButton.vue';
+
+const email = ref('');
+const password = ref('');
+const autoSignin = ref(false);
+
+const router = useRouter();
+
+function goToFindId() {
+  router.push('/findId');
+}
+
+function goToFindPassword() {
+  router.push('/findPassword');
+}
+
+function goToSignup() {
+  router.push('/signup');
+}
 </script>
 
 <template>
@@ -19,7 +41,48 @@ import BaseFormField from '@/components/BaseFormField.vue';
             icon="lock-closed"
           />
         </BaseFormField>
+        <BaseFormField>
+          <div class="flex items-center justify-between">
+            <BaseCheckbox v-model="autoSignin" label="자동 로그인" />
+            <div class="flex items-center space-x-2 text-sm">
+              <button
+                @click="goToFindId"
+                class="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-300"
+              >
+                아이디 찾기
+              </button>
+              <span class="text-gray-400">|</span>
+              <button
+                @click="goToFindPassword"
+                class="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-300"
+              >
+                비밀번호 찾기
+              </button>
+            </div>
+          </div>
+        </BaseFormField>
       </form>
+      <template #after-button>
+        <div class="inline-flex items-center justify-between self-stretch">
+          <div
+            class="justify-start text-right font-['Inter'] text-sm font-normal leading-tight text-black"
+          >
+            아직 회원이 아니신가요?
+          </div>
+          <button
+            @click="goToSignup"
+            class="justify-end text-secondBlue-300 hover:text-blue-700 dark:text-white dark:hover:text-blue-300"
+          >
+            회원가입
+          </button>
+        </div>
+        <div className="flex items-center justify-center gap-4 w-full">
+          <div className="flex-1 border-t border-scaleGray-300"></div>
+          <span className="px-4 text-sm text-zinc-600 font-normal leading-tight"> 또는 </span>
+          <div className="flex-1 border-t border-scaleGray-300"></div>
+        </div>
+        <SocialLoginButton />
+      </template>
     </BasePopup>
   </div>
 </template>

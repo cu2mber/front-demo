@@ -24,7 +24,6 @@ const emit = defineEmits(['click']);
 
     <div class="flex w-full flex-col items-center justify-center gap-8">
       <slot></slot>
-
       <button
         v-if="showButton"
         class="w-full rounded-xl bg-mainNavy-900 py-4 text-lg font-semibold text-white transition hover:bg-mainNavy-800"
@@ -32,6 +31,7 @@ const emit = defineEmits(['click']);
       >
         {{ buttonText }}
       </button>
+      <slot name="after-button"></slot>
     </div>
   </div>
 </template>
