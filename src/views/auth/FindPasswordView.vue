@@ -12,14 +12,12 @@ import BasePopup from '@/components/BasePopup.vue';
       @click="onSubmit"
     >
       <form @submit.prevent="onSubmit" class="flex w-full flex-col gap-4">
-        <BaseInput v-model="name" type="text" label="이름" placeholder="이름을 입력해주세요">
-        </BaseInput>
-        <BaseInput
-          v-model="email"
-          type="email"
-          label="이메일"
-          placeholder="이메일을 입력해주세요"
-        />
+        <BaseFormField id="name" label="이름">
+          <BaseInput v-model="name" type="text" placeholder="이름을 입력해주세요" />
+        </BaseFormField>
+        <BaseFormField id="email" label="이메일">
+          <BaseInput v-model="email" type="email" placeholder="이메일을 입력해주세요" />
+        </BaseFormField>
       </form>
     </BasePopup>
   </div>
