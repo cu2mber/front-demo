@@ -11,6 +11,9 @@ import EventDetailView from '@/views/event/EventDetailView.vue';
 import CheckRouteView from '@/views/CheckRouteView.vue';
 import RecruitListView from '@/views/recruitment/RecruitListView.vue';
 import RecruitDetailView from '@/views/recruitment/RecruitDetailView.vue';
+import MyPageView from '@/views/MyPageView.vue';
+import AdminPageView from '@/views/AdminPageView.vue';
+import GovPageView from '@/views/GovPageView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +30,24 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
+    },
+    {
+      path: '/mypage',
+      name: '마이페이지',
+      component: MyPageView,
+      meta: { layout: 'mypage' },
+    },
+    {
+      path: '/gov',
+      name: '지자체페이지',
+      component: GovPageView,
+      meta: { layout: 'gov' },
+    },
+    {
+      path: '/admin',
+      name: '관리자페이지',
+      component: AdminPageView,
+      meta: { layout: 'admin' },
     },
     {
       path: '/signup',
@@ -49,57 +70,57 @@ const router = createRouter({
       component: FindPasswordView,
     },
     {
-      path: '/notices',
+      path: '/notice',
       name: '공지사항',
       component: NoticeListView,
     },
     {
-      path: '/notices/:id',
+      path: '/notice/:id',
       name: '공지사항상세',
       component: NoticeDetailView,
     },
     {
-      path: '/notices/create',
+      path: '/notice/create',
       name: '공지사항등록',
       component: () => import('../views/notice/NoticeFormView.vue'),
     },
     {
-      path: '/notices/:id/edit',
+      path: '/notice/:id/edit',
       name: '공지사항수정',
       component: () => import('../views/notice/NoticeFormView.vue'),
     },
     {
-      path: '/events',
+      path: '/event',
       name: '행사',
       component: EventListView,
     },
     {
-      path: '/evnets/:id',
+      path: '/event/:id',
       name: '행사상세',
       component: EventDetailView,
     },
     {
-      path: '/events/create',
+      path: '/event/create',
       name: '행사등록',
       component: () => import('../views/event/EventFormView.vue'),
     },
     {
-      path: '/evnets/:id/edit',
+      path: '/event/:id/edit',
       name: '행사수정',
       component: () => import('../views/event/EventFormView.vue'),
     },
     {
-      path: '/routes',
+      path: '/route',
       name: '노선확인',
       component: CheckRouteView,
     },
     {
-      path: '/recruits',
+      path: '/recruit',
       name: '모집',
       component: RecruitListView,
     },
     {
-      path: '/recruits/:id',
+      path: '/recruit/:id',
       name: '모집상세',
       component: RecruitDetailView,
     },
