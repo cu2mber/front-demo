@@ -1,6 +1,17 @@
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute } from 'vue-router';
+import { computed, ref } from 'vue';
 import Navbar from './components/Navbar.vue';
+import Sidebar from '@/components/Sidebar.vue'; // 새로 만든 사이드바
+
+const route = useRoute();
+
+const showSidebar = computed(
+  () =>
+    route.path.startsWith('/mypage') ||
+    route.path.startsWith('/gov') ||
+    route.path.startsWith('/admin'),
+);
 </script>
 
 <template>
@@ -9,11 +20,18 @@ import Navbar from './components/Navbar.vue';
       <Navbar />
     </header>
 
-    <main class="flex flex-1 items-start justify-center bg-white px-4">
-      <RouterView />
-      <!-- <div class="w-full max-w-xl">
-      </div> -->
-    </main>
+    <div class="flex flex-1">
+      <aside
+        v-if="showSidebar"
+        class="w-64 border-r-2 font-bold text-mainNavy-900 dark:bg-gray-800"
+      >
+        <Sidebar />
+      </aside>
+
+      <main class="flex flex-1 items-start justify-center px-4">
+        <RouterView />
+      </main>
+    </div>
 
     <footer class="w-full bg-gray-50 p-4 text-center text-sm text-gray-400">
       © 2025 오이소박이
