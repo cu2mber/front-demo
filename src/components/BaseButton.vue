@@ -11,7 +11,7 @@ const emit = defineEmits(['click']);
 
 const baseClasses = {
   primary: 'bg-mainNavy-800 hover:bg-mainNavy-900 text-white',
-  blue: 'bg-blue-500 hover:bg-blue-700 text-white font-bold',
+  blue: 'bg-secondBlue-500 hover:bg-secondBlue-700 text-white font-bold',
   secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800',
 };
 

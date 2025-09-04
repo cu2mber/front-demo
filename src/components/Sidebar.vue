@@ -53,7 +53,11 @@ const toggleMenu = item => {
 </script>
 
 <template>
-  <aside id="sidebar" class="relative h-full w-64 border-r-2 dark:bg-gray-800" aria-label="Sidebar">
+  <aside
+    id="sidebar"
+    class="relative h-full w-64 border-r-2 text-mainNavy-900 dark:bg-gray-800"
+    aria-label="Sidebar"
+  >
     <div class="h-full overflow-y-auto px-3 py-4 dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
         <li v-for="item in menus" :key="item.path">
