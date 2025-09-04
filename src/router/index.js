@@ -13,7 +13,8 @@ import RecruitListView from '@/views/recruitment/RecruitListView.vue';
 import RecruitDetailView from '@/views/recruitment/RecruitDetailView.vue';
 import MyPageView from '@/views/MyPageView.vue';
 import AdminPageView from '@/views/AdminPageView.vue';
-import GovPageView from '@/views/GovPageView.vue';
+import GovPageView from '@/views/gov/GovPageView.vue';
+import GovEventView from '@/views/gov/GovEventView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,21 @@ const router = createRouter({
       name: '지자체페이지',
       component: GovPageView,
       meta: { layout: 'gov' },
+    },
+    {
+      path: '/gov/events',
+      name: '지자체행사관리페이지',
+      component: GovEventView,
+    },
+    {
+      path: '/gov/recruit',
+      name: '지자체모집관리페이지',
+      component: GovPageView,
+    },
+    {
+      path: '/gov/routes',
+      name: '지자체경유지관리페이지',
+      component: GovPageView,
     },
     {
       path: '/admin',

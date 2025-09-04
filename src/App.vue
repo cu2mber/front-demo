@@ -2,7 +2,7 @@
 import { RouterView, useRoute } from 'vue-router';
 import { computed, ref } from 'vue';
 import Navbar from './components/Navbar.vue';
-import Sidebar from '@/components/Sidebar.vue'; // 새로 만든 사이드바
+import Sidebar from '@/components/Sidebar.vue';
 
 const route = useRoute();
 
