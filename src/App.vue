@@ -21,10 +21,7 @@ const showSidebar = computed(
     </header>
 
     <div class="flex flex-1">
-      <aside
-        v-if="showSidebar"
-        class="w-64 border-r-2 font-bold text-mainNavy-900 dark:bg-gray-800"
-      >
+      <aside v-if="showSidebar">
         <Sidebar />
       </aside>
 
