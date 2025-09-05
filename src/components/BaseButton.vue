@@ -13,6 +13,7 @@ const baseClasses = {
   primary: 'bg-mainNavy-800 hover:bg-mainNavy-900 text-white',
   blue: 'bg-secondBlue-500 hover:bg-secondBlue-700 text-white font-bold',
   secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800',
+  warning: 'bg-warning text-white hover:bg-red-700',
 };
 
 const sizeClasses = {
@@ -20,13 +21,19 @@ const sizeClasses = {
   md: 'text-sm px-5 py-2.5',
   lg: 'text-base px-6 py-3',
 };
+
+function handleClick(event) {
+  if (!props.disabled) {
+    emit('click', event);
+  }
+}
 </script>
 
 <template>
   <button
     :type="type"
     :disabled="disabled"
-    @click="$emit('click')"
+    @click.stop.prevent="handleClick"
     class="rounded font-medium transition duration-200"
     :class="[
       baseClasses[variant],

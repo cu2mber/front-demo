@@ -1,4 +1,6 @@
 <script setup>
+import BaseButton from './BaseButton.vue';
+
 const props = defineProps({
   columns: Array,
   items: Array,
@@ -55,22 +57,17 @@ function onDelete(item) {
           {{ item[col.key] }}
         </td>
         <td v-if="showEdit || showDelete" class="space-x-2 px-4 py-2">
-          <button
-            v-if="showEdit"
-            type="button"
-            class="rounded bg-secondBlue-600 px-3 py-1 text-white hover:bg-secondBlue-700"
-            @click.stop.prevent="onEdit(item)"
-          >
+          <BaseButton v-if="showEdit" variant="blue" size="sm" @click.stop.prevent="onEdit(item)">
             수정
-          </button>
-          <button
+          </BaseButton>
+          <BaseButton
             v-if="showDelete"
-            type="button"
-            class="rounded bg-warning px-3 py-1 text-white hover:bg-red-700"
+            variant="warning"
+            size="sm"
             @click.stop.prevent="onDelete(item)"
           >
             삭제
-          </button>
+          </BaseButton>
         </td>
       </tr>
     </tbody>
