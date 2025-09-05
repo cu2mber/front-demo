@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import BaseTitle from '@/components/BaseTitle.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import BaseTable from '@/components/BaseTable.vue';
+import BaseButton from '@/components/BaseButton.vue';
 import Pagination from '@/components/Pagination.vue';
 import Swal from 'sweetalert2';
 
@@ -87,13 +88,37 @@ function handleDeleteClick(item) {
 function handleRowClick(no) {
   router.push(`/event/${no}`);
 }
+
+function goToRegister() {
+  router.push('/event/create');
+}
+
+function handleDeleteAll() {
+  Swal.fire({
+    title: '전체 행사를 삭제하시겠습니까?',
+    text: '삭제하면 다시 복구할 수 없습니다.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: '네',
+    cancelButtonText: '아니요',
+    confirmButtonColor: '#009EE3',
+    cancelButtonColor: '#C2C2C2',
+  }).then(result => {
+    if (result.isConfirmed) {
+      datas.value = [];
+      currentPage.value = 1; // 초기화
+    }
+  });
+}
 </script>
 
 <template>
   <div class="w-full max-w-4xl px-4 py-8">
     <BaseTitle title="행사 관리" />
     <SearchBar v-model="searchQuery" @search="onSearch" />
-
+    <div class="mb-2 flex justify-end">
+      <BaseButton variant="blue" @click="goToRegister">행사 등록</BaseButton>
+    </div>
     <BaseTable
       :columns="[
         { key: 'no', label: '번호' },
@@ -111,6 +136,10 @@ function handleRowClick(no) {
       @delete-click="handleDeleteClick"
       @row-click="handleRowClick"
     />
+
+    <div class="mt-2 flex justify-end">
+      <BaseButton variant="secondary" @click="handleDeleteAll">전체 삭제</BaseButton>
+    </div>
 
     <Pagination
       class="mt-4 justify-center"
