@@ -62,7 +62,7 @@ function handleSortChange({ key, order }) {
 }
 
 function handleEditClick(item) {
-  router.push(`event/${item.no}/edit`);
+  router.push(`/event/${item.no}/edit`);
 }
 
 function handleDeleteClick(item) {

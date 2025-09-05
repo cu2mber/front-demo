@@ -8,7 +8,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 function goToList() {
-  router.push('/notices');
+  router.push('/notice');
 }
 
 const data = {

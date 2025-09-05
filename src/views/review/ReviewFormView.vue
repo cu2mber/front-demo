@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import BaseTitle from '@/components/BaseTitle.vue';
 import BaseButton from '@/components/BaseButton.vue';
@@ -10,8 +10,9 @@ import Editor from '@/components/Editor.vue';
 
 const data = {
   no: 1,
-  title: '오이소 이용방법',
+  title: '축제이름',
   author: '관리자',
+  isPrivate: false,
   content: '알아서 잘! 이용하면 됩니다 ㅎㅎ',
   createdAt: '2025-06-29',
 };
@@ -20,10 +21,10 @@ const route = useRoute();
 const router = useRouter();
 
 function goToBack() {
-  router.go(-1);
+  router.back();
 }
 
-const title = ref('축제이름');
+const title = ref('');
 const isPrivate = ref(false);
 const content = ref('');
 
@@ -32,25 +33,31 @@ const isEditMode = computed(() => !!route.params.id);
 function submitForm() {
   if (isEditMode.value) {
     console.log('수정 - 제목:', title.value);
-    console.log('수정 - 고정:', pinTitle.value);
+    console.log('수정 - 비공개:', isPrivate.value);
     console.log('수정 - 본문:', content.value);
   } else {
     console.log('등록 - 제목:', title.value);
-    console.log('등록 - 고정:', pinTitle.value);
+    console.log('등록 - 비공개:', isPrivate.value);
     console.log('등록 - 본문:', content.value);
   }
 }
 
-onMounted(() => {
-  if (isEditMode.value) {
-    const id = route.query.id;
-    // 데이터 불러오는 로직 추가
-
-    title.value = data.title;
-    pinTitle.value = true;
-    content.value = data.content;
-  }
-});
+watch(
+  () => route.fullPath,
+  () => {
+    if (isEditMode.value) {
+      // 실제 API 호출 등으로 데이터를 가져와야 함
+      title.value = data.title;
+      isPrivate.value = data.isPrivate;
+      content.value = data.content;
+    } else {
+      title.value = '';
+      isPrivate.value = false;
+      content.value = '';
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <template>

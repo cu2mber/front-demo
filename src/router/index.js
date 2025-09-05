@@ -146,12 +146,12 @@ const router = createRouter({
     //   component: () => import('../views/recruitment/RecruitEditView.vue')
     // }
     {
-      path: '/reviews/create',
+      path: '/review/create',
       name: '후기등록',
       component: () => import('../views/review/ReviewFormView.vue'),
     },
     {
-      path: '/reviews/:id/edit',
+      path: '/review/:id/edit',
       name: '후기수정',
       component: () => import('../views/review/ReviewFormView.vue'),
     },

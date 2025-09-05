@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import BaseFormField from '@/components/BaseFormField.vue';
 import BaseInput from '@/components/BaseInput.vue';
@@ -11,7 +11,9 @@ import Editor from '@/components/Editor.vue';
 const data = {
   no: 1,
   title: '오이소 이용방법',
-  author: '관리자',
+  price: 30000,
+  host: '김해',
+  contact: '055-748-3827',
   content: '알아서 잘! 이용하면 됩니다 ㅎㅎ',
   createdAt: '2025-06-29',
 };
@@ -22,15 +24,37 @@ const route = useRoute();
 const router = useRouter();
 
 function goToBack() {
-  router.go(-1);
+  router.back();
 }
 
 const title = ref('');
+const price = ref(null);
 const isFree = ref(false);
+const host = ref('');
+const contact = ref('');
 const content = ref('');
-const titleInputRef = ref(null);
 
 const isEditMode = computed(() => !!route.params.id);
+
+watch(
+  () => route.fullPath,
+  () => {
+    if (isEditMode.value) {
+      // API 호출 등으로 id별 데이터 불러와야 함
+      title.value = data.title;
+      isFree.value = false;
+      price.value = data.price;
+      contact.value = data.contact;
+      host.value = data.host;
+      content.value = data.content;
+    } else {
+      title.value = '';
+      isFree.value = false;
+      price.value = '';
+    }
+  },
+  { immediate: true },
+);
 
 function submitForm() {
   if (isEditMode.value) {
@@ -43,29 +67,17 @@ function submitForm() {
     console.log('등록 - 본문:', content.value);
   }
 }
-
-onMounted(() => {
-  titleInputRef.value?.focus();
-  if (isEditMode.value) {
-    const id = route.query.id;
-    // 데이터 불러오는 로직 추가
-
-    title.value = data.title;
-    pinTitle.value = true;
-    content.value = data.content;
-  }
-});
 </script>
 
 <template>
   <div class="mx-auto space-y-6 px-4">
     <BaseTitle :title="isEditMode ? '행사 수정' : '행사 등록'" />
 
-    <BaseFormField id="name" label="행사이름" showBorder>
+    <BaseFormField id="title" label="행사이름" showBorder>
       <BaseInput
-        id="name"
+        id="title"
         type="text"
-        v-model="name"
+        v-model="title"
         placeholder="행사 이름을 입력하세요."
         ref="titleInputRef"
       />
@@ -88,13 +100,18 @@ onMounted(() => {
       <BaseInput
         id="host"
         type="text"
-        v-model="name"
+        v-model="host"
         placeholder="주최 혹은 주최기관을 입력하세요."
       />
     </BaseFormField>
 
     <BaseFormField id="contact" label="문의 연락처" showBorder>
-      <BaseInput id="contact" type="text" v-model="name" placeholder="문의 연락처를 입력하세요." />
+      <BaseInput
+        id="contact"
+        type="text"
+        v-model="contact"
+        placeholder="문의 연락처를 입력하세요."
+      />
     </BaseFormField>
 
     <BaseFormField id="content" label="본문" showBorder>

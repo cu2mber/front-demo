@@ -26,7 +26,7 @@ const showSidebar = computed(
       </aside>
 
       <main class="flex flex-1 items-start justify-center px-4">
-        <RouterView />
+        <RouterView :key="route.fullPath" />
       </main>
     </div>
 

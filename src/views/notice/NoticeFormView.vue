@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, useTemplateRef } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import BaseFormField from '@/components/BaseFormField.vue';
 import BaseInput from '@/components/BaseInput.vue';
@@ -13,6 +13,7 @@ const data = {
   title: '오이소 이용방법',
   author: '관리자',
   content: '알아서 잘! 이용하면 됩니다 ㅎㅎ',
+  pinTitle: true,
   createdAt: '2025-06-29',
 };
 
@@ -20,7 +21,7 @@ const route = useRoute();
 const router = useRouter();
 
 function goToBack() {
-  router.go(-1);
+  router.back();
 }
 
 const title = ref('');
@@ -42,17 +43,23 @@ function submitForm() {
   }
 }
 
-onMounted(() => {
-  titleInputRef.value?.focus();
-  if (isEditMode.value) {
-    const id = route.query.id;
-    // 데이터 불러오는 로직 추가
-
-    title.value = data.title;
-    pinTitle.value = true;
-    content.value = data.content;
-  }
-});
+watch(
+  () => route.fullPath,
+  () => {
+    if (isEditMode.value) {
+      // API 호출 등으로 id별 데이터 불러와야 함
+      title.value = data.title;
+      pinTitle.value = data.pinTitle;
+      content.value = data.content;
+    } else {
+      title.value = '';
+      pinTitle.value = false;
+      content.value = '';
+    }
+    titleInputRef.value?.focus();
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
