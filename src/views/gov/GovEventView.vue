@@ -112,11 +112,12 @@ function handleRowClick(no) {
       @row-click="handleRowClick"
     />
 
-    <!-- <Pagination
+    <Pagination
+      class="mt-4 justify-center"
       :current-page="currentPage"
       :total-items="sortedItems.length"
       :per-page="perPage"
       @update:currentPage="currentPage = $event"
-    /> -->
+    />
   </div>
 </template>
