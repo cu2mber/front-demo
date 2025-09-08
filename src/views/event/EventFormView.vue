@@ -11,6 +11,8 @@ import Editor from '@/components/Editor.vue';
 const data = {
   no: 1,
   title: '오이소 이용방법',
+  start: '2025-06-30',
+  end: '2025-07-10',
   price: 30000,
   host: '김해',
   contact: '055-748-3827',
@@ -28,6 +30,8 @@ function goToBack() {
 }
 
 const title = ref('');
+const start = ref(null);
+const end = ref(null);
 const price = ref(null);
 const isFree = ref(false);
 const host = ref('');
@@ -42,6 +46,8 @@ watch(
     if (isEditMode.value) {
       // API 호출 등으로 id별 데이터 불러와야 함
       title.value = data.title;
+      start.value = data.start;
+      end.value = data.end;
       isFree.value = false;
       price.value = data.price;
       contact.value = data.contact;
@@ -51,6 +57,8 @@ watch(
       title.value = '';
       isFree.value = false;
       price.value = '';
+      start.value = '';
+      end.value = '';
     }
   },
   { immediate: true },
@@ -83,6 +91,13 @@ function submitForm() {
       />
     </BaseFormField>
 
+    <BaseFormField id="date" label="주최기간" showBorder>
+      <div class="flex w-3/5 items-center gap-2">
+        <BaseInput id="start" type="date" v-model="start" class="flex-1" />
+        <span class="text-gray-500">~</span>
+        <BaseInput id="end" type="date" v-model="end" class="flex-1" />
+      </div>
+    </BaseFormField>
     <BaseFormField id="price" label="요금" showBorder>
       <BaseInput
         id="price"
