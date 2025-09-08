@@ -55,10 +55,10 @@ const toggleMenu = item => {
 <template>
   <aside
     id="sidebar"
-    class="relative h-full w-64 border-r-2 text-mainNavy-900 dark:bg-gray-800"
+    class="w-25 relative h-full border-r-2 text-mainNavy-900 transition-all duration-200 sm:w-32 md:w-40 lg:w-64 dark:bg-gray-800"
     aria-label="Sidebar"
   >
-    <div class="h-full overflow-y-auto px-3 py-4 dark:bg-gray-800">
+    <div class="h-full overflow-y-auto px-2 py-4 dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
         <li v-for="item in menus" :key="item.path">
           <div>
@@ -69,7 +69,7 @@ const toggleMenu = item => {
               :class="route.path.startsWith(item.path) ? 'bg-gray-200 dark:bg-gray-700' : ''"
             >
               <span class="ms-3">{{ item.label }}</span>
-              <span>
+              <span class="ml-3 text-scaleGray-400">
                 {{ openMenu === item.label ? '▲' : '▼' }}
               </span>
             </button>
