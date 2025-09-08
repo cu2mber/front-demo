@@ -16,6 +16,7 @@ import AdminPageView from '@/views/AdminPageView.vue';
 import GovPageView from '@/views/gov/GovPageView.vue';
 import GovEventView from '@/views/gov/GovEventView.vue';
 import GovStopoverView from '@/views/gov/GovStopoverView.vue';
+import StopoverFormView from '@/views/gov/StopoverFormView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +60,16 @@ const router = createRouter({
       path: '/gov/routes',
       name: '지자체경유지관리페이지',
       component: GovStopoverView,
+    },
+    {
+      path: '/gov/routes/create',
+      name: '경유지추가페이지',
+      component: StopoverFormView,
+    },
+    {
+      path: '/gov/routes/:id/edit',
+      name: '경유지수정페이지',
+      component: StopoverFormView,
     },
     {
       path: '/admin',

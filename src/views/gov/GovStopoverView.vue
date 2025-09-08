@@ -26,8 +26,12 @@ const data = [
 ];
 const datas = ref(data);
 
+function handleAddClick() {
+  router.push('/gov/routes/create');
+}
+
 function handleEditClick(item) {
-  router.push(`/stopover/${item.no}/edit`);
+  router.push(`/gov/routes/${item.no}/edit`);
 }
 
 function handleDeleteClick(item) {
@@ -58,7 +62,7 @@ function handleRowClick(no) {
   <div class="w-full max-w-4xl px-4 py-8">
     <BaseTitle title="경유지 관리" />
     <div class="mb-2 flex justify-end space-x-2">
-      <BaseButton variant="blue">경유지 추가</BaseButton>
+      <BaseButton variant="blue" @click="handleAddClick">경유지 추가</BaseButton>
       <BaseButton variant="blue">순서 변경</BaseButton>
     </div>
     <BaseTable
