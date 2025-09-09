@@ -15,7 +15,7 @@ const menuSets = {
   gov: [
     { label: '지자체 정보', path: '/gov/profile' },
     { label: '행사 관리', path: '/gov/events' },
-    { label: '모집 관리', path: '/gov/recruit' },
+    { label: '모집 관리', path: '/gov/recruits' },
     { label: '경유지 관리', path: '/gov/routes' },
   ],
   admin: [
@@ -23,7 +23,7 @@ const menuSets = {
     {
       label: '지자체 관리',
       path: '/admin/gov',
-      children: [{ label: '모집 관리', path: '/admin/gov/recruit' }],
+      children: [{ label: '모집 관리', path: '/admin/gov/recruits' }],
     },
     { label: '신고 관리', path: '/admin/reports' },
   ],

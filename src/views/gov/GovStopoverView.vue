@@ -73,7 +73,6 @@ function handleRowClick(no) {
       :items="datas"
       :show-edit="true"
       :show-delete="true"
-      @sort-change="handleSortChange"
       @edit-click="handleEditClick"
       @delete-click="handleDeleteClick"
       @row-click="handleRowClick"

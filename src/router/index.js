@@ -18,6 +18,8 @@ import GovEventView from '@/views/gov/GovEventView.vue';
 import GovStopoverView from '@/views/gov/GovStopoverView.vue';
 import StopoverFormView from '@/views/gov/StopoverFormView.vue';
 import GovRecruitView from '@/views/gov/GovRecruitView.vue';
+import GovRecruitDetailView from '@/views/gov/GovRecruitDetailView.vue';
+import GovRecruitInfoView from '@/views/gov/GovRecruitInfoView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,10 +55,21 @@ const router = createRouter({
       component: GovEventView,
     },
     {
-      path: '/gov/recruit',
+      path: '/gov/recruits',
       name: '지자체모집관리페이지',
       component: GovRecruitView,
     },
+    {
+      path: '/gov/recruits/:eventId',
+      name: '지자체모집상세페이지',
+      component: GovRecruitDetailView,
+    },
+    {
+      path: '/gov/recruits/:eventId/:recruitId',
+      name: '지자체모집정보페이지',
+      component: GovRecruitInfoView,
+    },
+
     {
       path: '/gov/routes',
       name: '지자체경유지관리페이지',

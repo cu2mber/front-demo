@@ -15,35 +15,38 @@ const data = [
     no: 1,
     title: '보령 머드축제',
     address: '보령시',
-    startDate: '2025-01-01',
-    endDate: '2025-02-01',
+    departDate: '2025-01-01',
+    participant: 24,
     createdAt: '2025-06-29',
   },
   {
     no: 2,
-    title: '성현님의 레전드 면접강의',
-    address: '김해시',
-    startDate: '2025-01-01',
-    endDate: '2025-02-01',
+    title: '보령 머드축제',
+    address: '보령시',
+    departDate: '2025-01-02',
+    participant: 25,
     createdAt: '2025-06-29',
   },
   {
     no: 3,
-    title: '노아의 레전드 토익 강의',
-    address: '부산 광역시',
-    startDate: '2025-01-01',
-    endDate: '2025-02-01',
+    title: '보령 머드축제',
+    address: '보령시',
+    departDate: '2025-01-03',
+    participant: 28,
     createdAt: '2025-06-29',
   },
   {
     no: 4,
-    title: '지원의 레전드 발표 강의',
-    address: '부산 광역시',
-    startDate: '2025-01-01',
-    endDate: '2025-02-01',
+    title: '보령 머드축제',
+    address: '보령시',
+    departDate: '2025-01-05',
+    participant: 20,
     createdAt: '2025-06-29',
   },
 ];
+
+const mainTitle = data[0]?.title ?? '';
+const subTitle = data[0]?.address ?? '';
 const datas = ref(data);
 
 const searchQuery = ref('');
@@ -82,6 +85,10 @@ function handleSortChange({ key, order }) {
   sortOrder.value = order;
 }
 
+function handleEditClick(item) {
+  router.push(`/gov/recruits/${item.no}/edit`);
+}
+
 function handleDeleteClick(item) {
   Swal.fire({
     title: `${item.title}\n 삭제하시겠습니까?`,
@@ -102,11 +109,7 @@ function handleDeleteClick(item) {
 }
 
 function handleRowClick(no) {
-  router.push(`/gov/recruits/${no}`);
-}
-
-function goToRegister() {
-  router.push('/gov/recruits/create');
+  router.push({ path: `${router.currentRoute.value.path}/${no}` });
 }
 
 function handleDeleteAll() {
@@ -129,35 +132,31 @@ function handleDeleteAll() {
 </script>
 <template>
   <div class="w-full max-w-4xl px-4 py-8">
-    <BaseTitle title="모집 관리" />
+    <BaseTitle :title="mainTitle" :sub-title="subTitle" />
     <SearchBar v-model="searchQuery" @search="onSearch" />
-    <div class="mb-2 flex justify-end">
-      <BaseButton variant="blue" @click="goToRegister">모집 등록</BaseButton>
-    </div>
     <BaseTable
       :columns="[
         { key: 'no', label: '번호' },
-        { key: 'title', label: '제목' },
-        { key: 'address', label: '도착지' },
-        { key: 'eventDate', label: '행사일자' },
+        { key: 'departDate', label: '출발일' },
+        { key: 'participant', label: '신청인원' },
       ]"
       :items="paginatedItems"
       :sort-key="sortKey"
       :sort-order="sortOrder"
-      :show-edit="false"
+      :show-edit="true"
       :show-delete="true"
       @sort-change="handleSortChange"
+      @edit-click="handleEditClick"
       @delete-click="handleDeleteClick"
       @row-click="handleRowClick"
     >
-      <template #cell-eventDate="{ item }"> {{ item.startDate }} ~ {{ item.endDate }} </template>
       <template #header>
         <th class="px-4 py-2">비고</th>
       </template>
       <template #cell="{ item }">
         <td class="px-4 py-2">
           <BaseButton size="sm" variant="secondary" @click="handleRowClick(item.no)">
-            더 보기
+            자세히 보기
           </BaseButton>
         </td>
       </template>

@@ -12,20 +12,21 @@ const props = defineProps({
 
 <template>
   <div
-    class="flex flex-col pb-3 sm:flex-row sm:items-center sm:space-x-4"
+    class="flex flex-col items-center pb-3 sm:flex-row sm:items-center sm:space-x-4"
     :class="showBorder ? 'border-b' : ''"
+    style="min-width: 0; width: 100%"
   >
     <label
       v-if="label"
       :for="id"
-      class="whitespace-nowrap font-semibold sm:mb-0"
-      :style="{ width: labelWidth }"
+      class="flex-shrink-0 whitespace-nowrap font-semibold sm:mb-0"
+      :style="{ width: labelWidth, minWidth: labelWidth }"
     >
       {{ label }}
       <span v-if="required" class="text-red-500">*</span>
     </label>
 
-    <div class="min-w-0 flex-1">
+    <div class="min-w-0 flex-grow break-words" style="overflow-wrap: break-word">
       <slot></slot>
 
       <p v-if="error" class="mt-1 text-xs text-red-500">{{ error }}</p>
