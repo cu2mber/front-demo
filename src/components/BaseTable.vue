@@ -43,6 +43,7 @@ function onDelete(item) {
             {{ sortOrder === 1 ? '▲' : '▼' }}
           </span>
         </th>
+        <slot name="header"></slot>
         <th v-if="showEdit || showDelete" class="px-4 py-2">작업</th>
       </tr>
     </thead>
@@ -54,8 +55,11 @@ function onDelete(item) {
         class="cursor-pointer hover:bg-gray-50"
       >
         <td v-for="col in columns" :key="col.key" class="px-4 py-2">
-          {{ item[col.key] }}
+          <slot :name="`cell-${col.key}`" :item="item">
+            {{ item[col.key] }}
+          </slot>
         </td>
+        <slot name="cell" :item="item"></slot>
         <td v-if="showEdit || showDelete" class="space-x-2 px-4 py-2">
           <BaseButton v-if="showEdit" variant="blue" size="sm" @click.stop.prevent="onEdit(item)">
             수정

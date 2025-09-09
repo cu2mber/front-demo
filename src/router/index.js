@@ -17,6 +17,7 @@ import GovPageView from '@/views/gov/GovPageView.vue';
 import GovEventView from '@/views/gov/GovEventView.vue';
 import GovStopoverView from '@/views/gov/GovStopoverView.vue';
 import StopoverFormView from '@/views/gov/StopoverFormView.vue';
+import GovRecruitView from '@/views/gov/GovRecruitView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,7 +55,7 @@ const router = createRouter({
     {
       path: '/gov/recruit',
       name: '지자체모집관리페이지',
-      component: GovPageView,
+      component: GovRecruitView,
     },
     {
       path: '/gov/routes',
