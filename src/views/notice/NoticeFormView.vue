@@ -63,7 +63,7 @@ watch(
 </script>
 
 <template>
-  <div class="mx-auto space-y-6 px-4">
+  <div class="w-full max-w-4xl px-4 py-8">
     <BaseTitle :title="isEditMode ? '공지사항 수정' : '공지사항 등록'" />
 
     <BaseFormField id="title" label="제목" showBorder>

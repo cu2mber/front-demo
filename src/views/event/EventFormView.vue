@@ -78,7 +78,7 @@ function submitForm() {
 </script>
 
 <template>
-  <div class="mx-auto space-y-6 px-4">
+  <div class="w-full max-w-4xl px-4 py-8">
     <BaseTitle :title="isEditMode ? '행사 수정' : '행사 등록'" />
 
     <BaseFormField id="title" label="행사이름" showBorder>

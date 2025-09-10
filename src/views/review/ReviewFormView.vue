@@ -61,7 +61,7 @@ watch(
 </script>
 
 <template>
-  <div class="mx-auto space-y-6 px-4">
+  <div class="w-full max-w-4xl px-4 py-8">
     <BaseTitle :title="isEditMode ? '후기 수정' : '후기 등록'" />
 
     <form @submit.prevent="onSubmit" class="flex flex-col gap-4">

@@ -12,7 +12,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="flex flex-col items-center pb-3 sm:flex-row sm:items-center sm:space-x-4"
+    class="flex flex-col items-center py-3 sm:flex-row sm:items-center sm:space-x-4"
     :class="showBorder ? 'border-b' : ''"
     style="min-width: 0; width: 100%"
   >
