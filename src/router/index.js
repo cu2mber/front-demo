@@ -20,6 +20,7 @@ import StopoverFormView from '@/views/gov/StopoverFormView.vue';
 import GovRecruitView from '@/views/gov/GovRecruitView.vue';
 import GovRecruitDetailView from '@/views/gov/GovRecruitDetailView.vue';
 import GovRecruitInfoView from '@/views/gov/GovRecruitInfoView.vue';
+import RecruitFormView from '@/views/gov/RecruitFormView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -69,7 +70,16 @@ const router = createRouter({
       name: '지자체모집정보페이지',
       component: GovRecruitInfoView,
     },
-
+    {
+      path: '/gov/recruits/create',
+      name: '지자체모집등록페이지',
+      component: RecruitFormView,
+    },
+    {
+      path: '/gov/recruits/:id/edit',
+      name: '지자체모집수정페이지',
+      component: RecruitFormView,
+    },
     {
       path: '/gov/routes',
       name: '지자체경유지관리페이지',
@@ -166,11 +176,6 @@ const router = createRouter({
       name: '모집상세',
       component: RecruitDetailView,
     },
-    // {
-    //   path: '/recruits/:id/edit',
-    //   name: '모집수정',
-    //   component: () => import('../views/recruitment/RecruitEditView.vue')
-    // }
     {
       path: '/review/create',
       name: '후기등록',
