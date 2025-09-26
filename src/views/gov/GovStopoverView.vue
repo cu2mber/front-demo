@@ -2,9 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import BaseTitle from '@/components/BaseTitle.vue';
-import SearchBar from '@/components/SearchBar.vue';
 import BaseTable from '@/components/BaseTable.vue';
-import Pagination from '@/components/Pagination.vue';
 import Swal from 'sweetalert2';
 import BaseButton from '@/components/BaseButton.vue';
 

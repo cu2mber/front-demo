@@ -7,7 +7,7 @@ import BaseTitle from '@/components/BaseTitle.vue';
 const router = useRouter();
 
 function handleRowClick(no) {
-  router.push(`/notices/${no}`);
+  router.push(`/notice/${no}`);
 }
 
 const data = [

@@ -7,7 +7,7 @@ const selectedCategory = ref('전체');
 const router = useRouter();
 
 function goToList(no) {
-  router.push(`/events/${no}`);
+  router.push(`/event/${no}`);
 }
 
 const categories = [
