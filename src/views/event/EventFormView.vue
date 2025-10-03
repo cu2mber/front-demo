@@ -9,16 +9,23 @@ import BaseButton from '@/components/BaseButton.vue';
 import Editor from '@/components/Editor.vue';
 
 const data = {
-  no: 1,
-  title: '오이소 이용방법',
-  start: '2025-06-30',
-  end: '2025-07-10',
-  price: 30000,
-  host: '김해',
-  contact: '055-748-3827',
-  content: '알아서 잘! 이용하면 됩니다 ㅎㅎ',
-  createdAt: '2025-06-29',
+  no: 1,                // event_no (PK)
+  localNo: 101,         // local_no (FK)
+  categoryNo: 5,        // category_no (FK)
+  title: "오이소 이용방법",
+  address: "경상남도 김해시",
+  startDate: "2025-06-30",
+  endDate: "2025-07-10",
+  startTime: "10:00",
+  endTime: "18:00",
+  url: "https://www.mcst.go.kr/web/main.jsp",
+  spot: "봉리단길",
+  fee: 30000,
+  host: "경상남도 김해시",
+  inquiry: "055-748-3827",
+  description: "살기 좋은 김해로 놀러 오세요~",
 };
+
 
 const detail = ref(data);
 
